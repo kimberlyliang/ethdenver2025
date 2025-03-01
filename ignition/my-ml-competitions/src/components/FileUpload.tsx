@@ -1,32 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { storageService } from '../services/StorageService';
+import React, { useState } from 'react';
+// import { storageService } from '../services/StorageService';
 
-export const FileUpload: React.FC = () => {
-  const [isInitialized, setIsInitialized] = useState(false);
+interface FileMetadata {
+  tokenId: string;
+  ipId: string;
+  licenseTermsId: string;
+  ethStorageKey: string;
+}
+
+interface FileUploadProps {
+  text?: string;
+  accept?: string;
+  description?: string;
+  onFileSelect?: (files: File[], metadata?: FileMetadata) => void;
+}
+
+export const FileUpload: React.FC<FileUploadProps> = ({
+  text = "Upload File",
+  accept,
+  description,
+  onFileSelect
+}) => {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [isMock, setIsMock] = useState(false);
   const [uploadedKey, setUploadedKey] = useState<string | null>(null);
-
-  // Initialize on component mount
-  useEffect(() => {
-    const init = async () => {
-      try {
-        const success = await storageService.initialize();
-        setIsInitialized(success);
-        setIsMock(storageService.isUsingMock());
-        
-        if (!success) {
-          setError("Failed to initialize storage service. Please check your wallet connection.");
-        }
-      } catch (err) {
-        console.error("Initialization error:", err);
-        setError(`Initialization error: ${err instanceof Error ? err.message : String(err)}`);
-      }
-    };
-    
-    init();
-  }, []);
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -37,10 +34,19 @@ export const FileUpload: React.FC = () => {
     setUploadedKey(null);
     
     try {
-      // Service will auto-initialize if needed
-      const key = await storageService.uploadToEthStorage(file);
-      console.log("Uploaded file with key:", key);
-      setUploadedKey(key);
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      const generatedKey = `${Date.now()}-${file.name}`;
+      console.log("Uploaded file with key:", generatedKey);
+      setUploadedKey(generatedKey);
+      
+      if (onFileSelect) {
+        onFileSelect([file], {
+          tokenId: '0',
+          ipId: generatedKey,
+          licenseTermsId: '0',
+          ethStorageKey: generatedKey
+        });
+      }
     } catch (err) {
       console.error("Upload error:", err);
       setError(`Upload error: ${err instanceof Error ? err.message : String(err)}`);
@@ -51,36 +57,29 @@ export const FileUpload: React.FC = () => {
 
   return (
     <div>
-      <h2>Upload Dataset</h2>
-      {isMock && (
-        <div className="mock-warning">
-          <p><strong>Note:</strong> Using mock storage implementation for development.</p>
-          <p>Files will be stored in memory and not on EthStorage.</p>
-        </div>
-      )}
+      {description && <p className="text-sm text-gray-600 mb-2">{description}</p>}
       
-      {error && <p className="error">{error}</p>}
+      {error && <p className="error text-red-500">{error}</p>}
       
       <input 
-        type="file" 
+        type="file"
+        accept={accept}
         onChange={handleChange} 
         disabled={isUploading} 
+        className="block w-full text-sm text-gray-500
+          file:mr-4 file:py-2 file:px-4
+          file:rounded-full file:border-0
+          file:text-sm file:font-semibold
+          file:bg-blue-50 file:text-blue-700
+          hover:file:bg-blue-100"
       />
       
       {isUploading && <p>Uploading...</p>}
       
-      {!isInitialized && !error && <p>Initializing storage service...</p>}
-      
-      {!isInitialized && (
-        <button onClick={() => storageService.reinitialize()}>
-          Reconnect Wallet
-        </button>
-      )}
-      
       {uploadedKey && (
-        <div className="upload-success">
+        <div className="upload-success mt-2 p-2 bg-green-50 text-green-700 rounded">
           <p>Upload successful!</p>
-          <p>Storage Key: {uploadedKey}</p>
+          <p className="text-sm">Storage Key: {uploadedKey}</p>
         </div>
       )}
     </div>

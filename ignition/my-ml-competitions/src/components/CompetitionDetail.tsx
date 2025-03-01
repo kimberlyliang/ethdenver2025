@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ethers } from "ethers";
-import contestJson from "../artifacts/contracts/contest.sol/Contest.json";
+// import { ethers } from "ethers";
+// import contestJson from "../artifacts/contracts/contest.sol/Contest.json";
 
-import FileUpload from "./FileUpload";
+import { FileUpload } from "./FileUpload";
 import StakeForm from "./StakeForm";
 
 type EthereumAddress = `0x${string}`;
@@ -22,7 +22,23 @@ interface Competition {
   owner: EthereumAddress;
 }
 
-const contestAbi = contestJson.abi;
+interface FileMetadata {
+  tokenId: string;
+  ipId: string;
+  licenseTermsId: string;
+  ethStorageKey: string;
+}
+
+// Default data for development
+const DEFAULT_COMPETITION: Competition = {
+  id: "0x123",
+  title: "ML Competition",
+  description: "A competition to build machine learning models",
+  datasetLink: "https://example.com/dataset",
+  deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toLocaleString(),
+  stakeAmount: "0.1",
+  owner: "0x0000000000000000000000000000000000000000" as EthereumAddress
+};
 
 const CompetitionDetail: React.FC<CompetitionDetailProps> = ({ walletAddress }) => {
   const { id } = useParams();
@@ -31,62 +47,21 @@ const CompetitionDetail: React.FC<CompetitionDetailProps> = ({ walletAddress }) 
   const [competition, setCompetition] = useState<Competition | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // File upload states (adjust as needed)
   const [uploadedFile, setUploadedFile] = useState<{
     file: File | null;
-    metadata?: {
-      tokenId: string;
-      ipId: string;
-      licenseTermsId: string;
-      ethStorageKey: string;
-    };
+    metadata?: FileMetadata;
   }>({ file: null });
   const [trainingFile, setTrainingFile] = useState<{
     file: File | null;
-    metadata?: {
-      tokenId: string;
-      ipId: string;
-      licenseTermsId: string;
-      ethStorageKey: string;
-    };
+    metadata?: FileMetadata;
   }>({ file: null });
   const [uploadError, setUploadError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchContestDetails = async () => {
       try {
-        if (!id) {
-          throw new Error("No contest address (id) found in URL.");
-        }
-        if (!window.ethereum) {
-          throw new Error("No Ethereum wallet found. Please install MetaMask.");
-        }
-
-        await window.ethereum.request({ method: "eth_requestAccounts" });
-        const provider = new ethers.BrowserProvider(window.ethereum);
-        const contract = new ethers.Contract(id, contestAbi, provider);
-
-        // Fetch contest details from the contract.
-        const title = await contract.title();
-        const description = await contract.description();
-        const datasetLink = await contract.datasetLink();
-        const deadlineBN = await contract.deadline();
-        const stakeRequiredBN = await contract.stakeRequired();
-        // Fetch contest owner (make sure your contest contract has an owner() function)
-        const owner = (await contract.owner()) as EthereumAddress;
-
-        const deadline = new Date(Number(deadlineBN) * 1000).toLocaleString();
-        const stakeAmount = ethers.formatUnits(stakeRequiredBN, "ether");
-
-        setCompetition({
-          id,
-          title,
-          description,
-          datasetLink,
-          deadline,
-          stakeAmount,
-          owner,
-        });
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        setCompetition(DEFAULT_COMPETITION);
       } catch (err) {
         console.error("Error loading contest details:", err);
       } finally {
@@ -102,7 +77,6 @@ const CompetitionDetail: React.FC<CompetitionDetailProps> = ({ walletAddress }) 
 
   return (
     <div className="max-w-3xl mx-auto p-4 space-y-6">
-      {/* Back Button */}
       <button
         onClick={() => navigate(-1)}
         className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
@@ -110,7 +84,6 @@ const CompetitionDetail: React.FC<CompetitionDetailProps> = ({ walletAddress }) 
         &larr; Back
       </button>
 
-      {/* Competition Details */}
       <div className="bg-white rounded-lg shadow p-6">
         <h2 className="text-3xl font-bold mb-4">{competition.title}</h2>
         <p className="mb-4">{competition.description}</p>
@@ -135,13 +108,12 @@ const CompetitionDetail: React.FC<CompetitionDetailProps> = ({ walletAddress }) 
           <span className="font-semibold">Contest Owner:</span> {competition.owner}
         </p>
 
-        {/* Upload File (ipynb) */}
         <div className="mb-4">
           <label className="block font-semibold mb-1">Upload File (ipynb)</label>
           <FileUpload
             text="Upload ipynb File"
             accept=".ipynb"
-            onFileSelect={(files, metadata) => {
+            onFileSelect={(files: File[], metadata?: FileMetadata) => {
               setUploadedFile({
                 file: files[0],
                 metadata
@@ -155,13 +127,12 @@ const CompetitionDetail: React.FC<CompetitionDetailProps> = ({ walletAddress }) 
           )}
         </div>
 
-        {/* Upload Training Data (CSV) */}
         <div className="mb-4">
           <label className="block font-semibold mb-1">Upload Training Data</label>
           <FileUpload
             text="Upload csv File"
             accept=".csv"
-            onFileSelect={(files, metadata) => {
+            onFileSelect={(files: File[], metadata?: FileMetadata) => {
               setTrainingFile({
                 file: files[0],
                 metadata
@@ -172,7 +143,6 @@ const CompetitionDetail: React.FC<CompetitionDetailProps> = ({ walletAddress }) 
           />
         </div>
 
-        {/* StakeForm: includes contestOwner so that the payment is sent to them, and NFT is issued */}
         <StakeForm
           stakeAmount={parseFloat(competition.stakeAmount)}
           account={walletAddress as EthereumAddress}
@@ -180,7 +150,6 @@ const CompetitionDetail: React.FC<CompetitionDetailProps> = ({ walletAddress }) 
         />
       </div>
 
-      {/* Leaderboard section - placeholder */}
       <div className="bg-white rounded-lg shadow p-6">
         <h3 className="text-2xl font-bold mb-4">Leaderboard</h3>
         <p>No leaderboard data available.</p>
