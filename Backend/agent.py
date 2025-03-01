@@ -1,27 +1,65 @@
 from web3 import Web3
 
-# Connect to Ethereum RPC
-web3 = Web3(Web3.HTTPProvider("https://quai.network"))
+import json
+import os
+from pathlib import Path
 
-# Smart contract ABI & address
-STORY_CONTRACT_ADDRESS = "0xYourStoryIntegrationContract"
-STORY_ABI = [...]  # Import ABI from deployed contract
+# Load environment variables
+from dotenv import load_dotenv
+load_dotenv()
 
-story_contract = web3.eth.contract(address=STORY_CONTRACT_ADDRESS, abi=STORY_ABI)
+# Connect to Ethereum RPC (default to localhost if not specified)
+RPC_URL = os.getenv('RPC_URL', 'http://localhost:8545')
+try:
+    web3 = Web3(Web3.HTTPProvider(RPC_URL))
+    if not web3.is_connected():
+        raise Exception(f"Failed to connect to {RPC_URL}")
+except Exception as e:
+    print(f"Error connecting to Ethereum node: {e}")
+    exit(1)
+
+# Load contract ABI from artifacts
+try:
+    artifacts_path = Path(__file__).parent.parent / "artifacts/contracts/StoryIntegration.sol/StoryIntegration.json"
+    with open(artifacts_path) as f:
+        contract_json = json.load(f)
+        STORY_ABI = contract_json['abi']
+except Exception as e:
+    print(f"Error loading contract ABI: {e}")
+    exit(1)
+
+# Contract address should be in environment
+STORY_CONTRACT_ADDRESS = os.getenv('STORY_CONTRACT_ADDRESS')
+if not STORY_CONTRACT_ADDRESS:
+    print("Error: STORY_CONTRACT_ADDRESS not set in environment")
+    exit(1)
+
+story_contract = web3.eth.contract(
+    address=web3.to_checksum_address(STORY_CONTRACT_ADDRESS), 
+    abi=STORY_ABI
+)
 
 def verify_dataset(dataset_id, developer_address):
     """Checks if AI developer owns a valid dataset license."""
-    
-    dataset_info = story_contract.functions.datasets(dataset_id).call()
-    dataset_ip_id = dataset_info[3]  # Story Protocol IP Asset ID
-    license_terms_id = dataset_info[4]  # Required license terms
+    try:
+        # Get dataset info
+        dataset_info = story_contract.functions.datasets(dataset_id).call()
+        dataset_ip_id = dataset_info[3]  # Story Protocol IP Asset ID
+        license_terms_id = dataset_info[4]  # Required license terms
 
-    # Check if developer has a valid dataset license
-    owned_license = story_contract.functions.mintDatasetLicense(dataset_ip_id, license_terms_id).call({'from': developer_address})
+        # Build transaction to mint license
+        tx = story_contract.functions.mintDatasetLicense(
+            dataset_ip_id, 
+            license_terms_id
+        ).build_transaction({
+            'from': developer_address,
+            'gas': 300000,  # Estimate gas limit
+            'nonce': web3.eth.get_transaction_count(developer_address)
+        })
 
-    if owned_license:
-        print(f"✅ Dataset {dataset_id} is licensed. Proceeding with AI training...")
-        return True
-    else:
-        print(f"❌ License missing! AI model cannot train on dataset {dataset_id}.")
-        return False
+        print(f"Transaction ready for dataset {dataset_id}. Please sign and submit.")
+        return tx
+        
+    except Exception as e:
+        print(f"Error verifying dataset license: {e}")
+        return None

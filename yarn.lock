@@ -3186,7 +3186,7 @@
     multiformats "9.9.0"
     viem "^2.8.12"
 
-"@story-protocol/protocol-core@github:storyprotocol/protocol-core-v1#v1.3.1", "@story-protocol/protocol-core@https://github.com/storyprotocol/protocol-core-v1":
+"@story-protocol/protocol-core@github:storyprotocol/protocol-core-v1", "@story-protocol/protocol-core@github:storyprotocol/protocol-core-v1#v1.3.1":
   version "v1.1.0"
   resolved "git+ssh://git@github.com/storyprotocol/protocol-core-v1.git#57187222d37dd69a3043992d13f0a0ccab67bcea"
   dependencies:

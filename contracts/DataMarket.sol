@@ -1,14 +1,13 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.26;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./StoryIntegration.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 contract DataMarket is ERC721URIStorage, Ownable {
-    using Counters for Counters.Counter;
-    Counters.Counter private _tokenIdCounter;
+    uint256 private _tokenIdCounter;
     
     StoryIntegration public storyIntegration;
 
@@ -24,14 +23,14 @@ contract DataMarket is ERC721URIStorage, Ownable {
 
     event DatasetUploaded(uint256 indexed tokenId, address indexed uploader, string metadata, address ipId);
 
-    constructor(address _storyIntegration) ERC721("DataSwarm Dataset", "DSDATA") {
+    constructor(address _storyIntegration) ERC721("DataSwarm Dataset", "DSDATA") Ownable(msg.sender) {
         storyIntegration = StoryIntegration(_storyIntegration);
     }
 
     /// @notice Uploads dataset, mints NFT, registers it as IP Asset
     function uploadDataset(string memory metadata) external returns (uint256, address, uint256) {
-        uint256 tokenId = _tokenIdCounter.current();
-        _tokenIdCounter.increment();
+        uint256 tokenId = _tokenIdCounter;
+        _tokenIdCounter += 1;
 
         // Mint dataset NFT
         _mint(msg.sender, tokenId);

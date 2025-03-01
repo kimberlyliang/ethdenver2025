@@ -1,20 +1,18 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.28;
+// SPDX-License-Identifier: GPL-3.0-or-later
+pragma solidity ^0.8.20;
 
-import {IHookReceiver} from "silo-contracts-v2/silo-core/contracts/interfaces/IHookReceiver.sol";
-import {ISiloConfig} from "silo-contracts-v2/silo-core/contracts/interfaces/ISiloConfig.sol";
-import {BaseHookReceiver} from "silo-contracts-v2/silo-core/contracts/utils/hook-receivers/_common/BaseHookReceiver.sol";
-import {GaugeHookReceiver} from "silo-contracts-v2/silo-core/contracts/utils/hook-receivers/gauge/GaugeHookReceiver.sol";
-import {PartialLiquidation} from "silo-contracts-v2/silo-core/contracts/utils/hook-receivers/liquidation/PartialLiquidation.sol";
-import {ERC721URIStorage} from "@openzeppelin/token/ERC721/extensions/ERC721URIStorage.sol";
-import {Ownable} from "@openzeppelin/access/Ownable.sol";
-import "./RoiProof.circom";
+import {IHookReceiver, BaseHookReceiver, GaugeHookReceiver, PartialLiquidation} from "./mocks/MockHookReceiver.sol";
+import {ISiloConfig} from "./mocks/MockSiloConfig.sol";
+import {IRoiProof} from "./interfaces/IRoiProof.sol";
+import {ERC721URIStorage} from "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract DatasetNFT is ERC721URIStorage, Ownable {
     uint256 private _tokenIdCounter;
     mapping(uint256 => address) public datasetOwners;
 
-    constructor() ERC721("DatasetNFT", "DNFT") {}
+    constructor() ERC721("DatasetNFT", "DNFT") Ownable(msg.sender) {}
 
     function mintDatasetNFT(address owner, string memory metadataURI) external onlyOwner returns (uint256) {
         _tokenIdCounter++;
@@ -29,7 +27,7 @@ contract DatasetNFT is ERC721URIStorage, Ownable {
 contract DatasetSiloHook is BaseHookReceiver, GaugeHookReceiver, PartialLiquidation, Ownable {
     DatasetNFT public datasetNFT;
     ISiloConfig public siloConfig;
-    RoiProof public roiProof;
+    IRoiProof public roiProof;
 
     mapping(uint256 => bool) public isNFTDeposited;
     mapping(uint256 => uint256) public aiPerformanceScores;
@@ -37,10 +35,10 @@ contract DatasetSiloHook is BaseHookReceiver, GaugeHookReceiver, PartialLiquidat
     event NFTDeposited(uint256 tokenId, address indexed owner);
     event YieldAdjusted(uint256 tokenId, uint256 newYieldRate);
 
-    constructor(address _datasetNFT, address _siloConfig, address _roiProof) {
+    constructor(address _datasetNFT, address _siloConfig, address _roiProof) Ownable(msg.sender) {
         datasetNFT = DatasetNFT(_datasetNFT);
         siloConfig = ISiloConfig(_siloConfig);
-        roiProof = RoiProof(_roiProof);
+        roiProof = IRoiProof(_roiProof);
     }
 
     function beforeDeposit(bytes calldata data) external override onlyHookReceiver {
