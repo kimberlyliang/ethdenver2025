@@ -1,14 +1,14 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+// contracts/mocks/MockZKVerifier.sol
+pragma solidity ^0.8.0;
 
 contract MockZKVerifier {
-    bool public willVerify = true;
+    bool private willVerify;
 
     function setWillVerify(bool _willVerify) external {
         willVerify = _willVerify;
     }
 
-    function verifyProof(bytes calldata, uint256) external view returns (bool) {
+    function verify(bytes32 proof) external view returns (bool) {
         return willVerify;
     }
 }

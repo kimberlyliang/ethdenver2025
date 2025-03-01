@@ -6,8 +6,10 @@ import contestJson from "../artifacts/contracts/contest.sol/Contest.json";
 import FileUpload from "./FileUpload";
 import StakeForm from "./StakeForm";
 
+type EthereumAddress = `0x${string}`;
+
 interface CompetitionDetailProps {
-  walletAddress: string;
+  walletAddress: EthereumAddress | "";
 }
 
 interface Competition {
@@ -17,7 +19,7 @@ interface Competition {
   datasetLink: string;
   deadline: string;
   stakeAmount: string;
-  owner: string;
+  owner: EthereumAddress;
 }
 
 const contestAbi = contestJson.abi;
@@ -54,7 +56,7 @@ const CompetitionDetail: React.FC<CompetitionDetailProps> = ({ walletAddress }) 
         const deadlineBN = await contract.deadline();
         const stakeRequiredBN = await contract.stakeRequired();
         // Fetch contest owner (make sure your contest contract has an owner() function)
-        const owner = await contract.owner();
+        const owner = (await contract.owner()) as EthereumAddress;
 
         const deadline = new Date(Number(deadlineBN) * 1000).toLocaleString();
         const stakeAmount = ethers.formatUnits(stakeRequiredBN, "ether");
@@ -143,7 +145,7 @@ const CompetitionDetail: React.FC<CompetitionDetailProps> = ({ walletAddress }) 
         {/* StakeForm: includes contestOwner so that the payment is sent to them, and NFT is issued */}
         <StakeForm
           stakeAmount={parseFloat(competition.stakeAmount)}
-          account={walletAddress}
+          account={walletAddress as EthereumAddress}
           contestOwner={competition.owner}
         />
       </div>

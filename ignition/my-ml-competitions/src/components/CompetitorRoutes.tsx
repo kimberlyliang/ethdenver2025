@@ -3,8 +3,10 @@ import { Routes, Route } from "react-router-dom";
 import CompetitionList from "./CompetitionList";
 import CompetitionDetail from "./CompetitionDetail";
 
+type EthereumAddress = `0x${string}`;
+
 interface CompetitorRoutesProps {
-  walletAddress: string;
+  walletAddress: EthereumAddress | "";
 }
 
 const CompetitorRoutes: React.FC<CompetitorRoutesProps> = ({ walletAddress }) => {

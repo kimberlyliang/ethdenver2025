@@ -1,0 +1,59 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "MockRewards",
+  "sourceName": "contracts/mocks/MockRewards.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "developer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "dataProvider",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "RewardsDistributed",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "developer",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "dataProvider",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "distributeRewards",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b50610117806100206000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063a70631a014602d575b600080fd5b603c603836600460aa565b603e565b005b816001600160a01b0316836001600160a01b03167f92d8e67e11e35152e7b525077fc4cf66393423d128ce3b803453b22533c5764183604051608291815260200190565b60405180910390a3505050565b80356001600160a01b038116811460a557600080fd5b919050565b60008060006060848603121560be57600080fd5b60c584608f565b925060d160208501608f565b915060408401359050925092509256fea2646970667358221220a6f7ea453063f977f5649b9655804d5b2fa243daa1d8b21e1ce9ca9b0cbd8d4064736f6c63430008140033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063a70631a014602d575b600080fd5b603c603836600460aa565b603e565b005b816001600160a01b0316836001600160a01b03167f92d8e67e11e35152e7b525077fc4cf66393423d128ce3b803453b22533c5764183604051608291815260200190565b60405180910390a3505050565b80356001600160a01b038116811460a557600080fd5b919050565b60008060006060848603121560be57600080fd5b60c584608f565b925060d160208501608f565b915060408401359050925092509256fea2646970667358221220a6f7ea453063f977f5649b9655804d5b2fa243daa1d8b21e1ce9ca9b0cbd8d4064736f6c63430008140033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

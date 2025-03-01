@@ -1,18 +1,95 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
-      "lastModificationDate": 1740800262445,
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/Benchmark.sol": {
+      "lastModificationDate": 1740814390990,
+      "contentHash": "0b60e4c9430173a28af3968ae2a486aa",
+      "sourceName": "contracts/Benchmark.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "Benchmark",
+        "IRewards",
+        "IZKVerifier"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/CredentialIssuer.sol": {
+      "lastModificationDate": 1740814391031,
+      "contentHash": "1887402d76f3a9b1f5f1893b4f6095cb",
+      "sourceName": "contracts/CredentialIssuer.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "CredentialIssuer"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
+      "lastModificationDate": 1740819468565,
       "contentHash": "d3c790edc9ccf808a17c5a6cd13614fd",
       "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -39,18 +116,18 @@
         "Ownable"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol": {
-      "lastModificationDate": 1740800262433,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol": {
+      "lastModificationDate": 1740819466462,
       "contentHash": "ba4a727732c179b4dfd6f8846c52c856",
       "sourceName": "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -80,18 +157,18 @@
         "ERC721URIStorage"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/utils/Context.sol": {
-      "lastModificationDate": 1740800262415,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/utils/Context.sol": {
+      "lastModificationDate": 1740819470607,
       "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -116,93 +193,18 @@
         "Context"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/interfaces/IERC4906.sol": {
-      "lastModificationDate": 1740800262442,
-      "contentHash": "273c26c9c728a6052d1175ace81d10b4",
-      "sourceName": "@openzeppelin/contracts/interfaces/IERC4906.sol",
-      "solcConfig": {
-        "version": "0.8.28",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./IERC165.sol",
-        "./IERC721.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "IERC4906"
-      ]
-    },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/interfaces/IERC165.sol": {
-      "lastModificationDate": 1740800262438,
-      "contentHash": "f808b485ee0cdc6768ee8385ae5f9a2a",
-      "sourceName": "@openzeppelin/contracts/interfaces/IERC165.sol",
-      "solcConfig": {
-        "version": "0.8.28",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../utils/introspection/IERC165.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": []
-    },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/utils/Strings.sol": {
-      "lastModificationDate": 1740800262448,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/utils/Strings.sol": {
+      "lastModificationDate": 1740819466389,
       "contentHash": "a55fef2557b35bac18a1880d3c2e6740",
       "sourceName": "@openzeppelin/contracts/utils/Strings.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -231,18 +233,18 @@
         "Strings"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol": {
-      "lastModificationDate": 1740800262432,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol": {
+      "lastModificationDate": 1740819467882,
       "contentHash": "a7951c81f7037d558c6d2f220b0cb38e",
       "sourceName": "@openzeppelin/contracts/token/ERC721/ERC721.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -275,18 +277,18 @@
         "ERC721"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/interfaces/IERC721.sol": {
-      "lastModificationDate": 1740800262442,
-      "contentHash": "d8d23fc2f55ed934d1a1b91c9afd8526",
-      "sourceName": "@openzeppelin/contracts/interfaces/IERC721.sol",
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/interfaces/IERC165.sol": {
+      "lastModificationDate": 1740819470924,
+      "contentHash": "f808b485ee0cdc6768ee8385ae5f9a2a",
+      "sourceName": "@openzeppelin/contracts/interfaces/IERC165.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -304,61 +306,25 @@
         }
       },
       "imports": [
-        "../token/ERC721/IERC721.sol"
+        "../utils/introspection/IERC165.sol"
       ],
       "versionPragmas": [
         "^0.8.20"
       ],
       "artifacts": []
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol": {
-      "lastModificationDate": 1740800262439,
-      "contentHash": "bf0119eb2a570f219729ff38b6cd1df8",
-      "sourceName": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/interfaces/IERC4906.sol": {
+      "lastModificationDate": 1740819467575,
+      "contentHash": "273c26c9c728a6052d1175ace81d10b4",
+      "sourceName": "@openzeppelin/contracts/interfaces/IERC4906.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "IERC165"
-      ]
-    },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol": {
-      "lastModificationDate": 1740800262442,
-      "contentHash": "1fdc621cd6747e8985e11fc76ce74511",
-      "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721.sol",
-      "solcConfig": {
-        "version": "0.8.28",
-        "settings": {
           "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
           "outputSelection": {
             "*": {
               "*": [
@@ -376,27 +342,28 @@
         }
       },
       "imports": [
-        "../../utils/introspection/IERC165.sol"
+        "./IERC165.sol",
+        "./IERC721.sol"
       ],
       "versionPragmas": [
         "^0.8.20"
       ],
       "artifacts": [
-        "IERC721"
+        "IERC4906"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/utils/math/Math.sol": {
-      "lastModificationDate": 1740800262444,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/utils/math/Math.sol": {
+      "lastModificationDate": 1740819470320,
       "contentHash": "2b2665ae9bdb1af440658741a77fe213",
       "sourceName": "@openzeppelin/contracts/utils/math/Math.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -424,18 +391,54 @@
         "Math"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/utils/math/SignedMath.sol": {
-      "lastModificationDate": 1740800262448,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/utils/math/SafeCast.sol": {
+      "lastModificationDate": 1740819467903,
+      "contentHash": "2adca1150f58fc6f3d1f0a0f22ee7cca",
+      "sourceName": "@openzeppelin/contracts/utils/math/SafeCast.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "SafeCast"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/utils/math/SignedMath.sol": {
+      "lastModificationDate": 1740819461542,
       "contentHash": "ae3528afb8bdb0a7dcfba5b115ee8074",
       "sourceName": "@openzeppelin/contracts/utils/math/SignedMath.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -462,54 +465,18 @@
         "SignedMath"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/utils/math/SafeCast.sol": {
-      "lastModificationDate": 1740800262448,
-      "contentHash": "2adca1150f58fc6f3d1f0a0f22ee7cca",
-      "sourceName": "@openzeppelin/contracts/utils/math/SafeCast.sol",
-      "solcConfig": {
-        "version": "0.8.28",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "SafeCast"
-      ]
-    },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/utils/Panic.sol": {
-      "lastModificationDate": 1740800262446,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/utils/Panic.sol": {
+      "lastModificationDate": 1740819461453,
       "contentHash": "2133dc13536b4a6a98131e431fac59e1",
       "sourceName": "@openzeppelin/contracts/utils/Panic.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -534,18 +501,56 @@
         "Panic"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
-      "lastModificationDate": 1740800262417,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol": {
+      "lastModificationDate": 1740819468588,
+      "contentHash": "1fdc621cd6747e8985e11fc76ce74511",
+      "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../utils/introspection/IERC165.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC721"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
+      "lastModificationDate": 1740819463705,
       "contentHash": "267d92fe4de67b1bdb3302c08f387dbf",
       "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -572,56 +577,18 @@
         "IERC721Errors"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
-      "lastModificationDate": 1740800262443,
-      "contentHash": "12c206f185cb951213799561fdcaa40d",
-      "sourceName": "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
-      "solcConfig": {
-        "version": "0.8.28",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../IERC721.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "IERC721Metadata"
-      ]
-    },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol": {
-      "lastModificationDate": 1740800262429,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol": {
+      "lastModificationDate": 1740819468644,
       "contentHash": "7c03c1e37c3dc24eafb76dc2b8a5c3a6",
       "sourceName": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -648,18 +615,56 @@
         "ERC165"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/token/ERC721/utils/ERC721Utils.sol": {
-      "lastModificationDate": 1740800262433,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
+      "lastModificationDate": 1740819468434,
+      "contentHash": "12c206f185cb951213799561fdcaa40d",
+      "sourceName": "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../IERC721.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC721Metadata"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/token/ERC721/utils/ERC721Utils.sol": {
+      "lastModificationDate": 1740819464174,
       "contentHash": "f4b67273e290784d0e155f004ae52f0b",
       "sourceName": "@openzeppelin/contracts/token/ERC721/utils/ERC721Utils.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -687,18 +692,54 @@
         "ERC721Utils"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
-      "lastModificationDate": 1740800262443,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+      "lastModificationDate": 1740819464636,
+      "contentHash": "bf0119eb2a570f219729ff38b6cd1df8",
+      "sourceName": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC165"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
+      "lastModificationDate": 1740819468423,
       "contentHash": "729ce0904eb533489ffcc3bfe91237d4",
       "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -723,18 +764,54 @@
         "IERC721Receiver"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
-      "lastModificationDate": 1740800262430,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/interfaces/IERC721.sol": {
+      "lastModificationDate": 1740819464639,
+      "contentHash": "d8d23fc2f55ed934d1a1b91c9afd8526",
+      "sourceName": "@openzeppelin/contracts/interfaces/IERC721.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../token/ERC721/IERC721.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": []
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
+      "lastModificationDate": 1740819467879,
       "contentHash": "227a6eb2225701c12d9c959b758b6333",
       "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -764,18 +841,18 @@
         "ERC20"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-      "lastModificationDate": 1740800262439,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1740819470355,
       "contentHash": "8f19f64d2adadf448840908bbaf431c8",
       "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -800,18 +877,18 @@
         "IERC20"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
-      "lastModificationDate": 1740800262439,
+    "/Users/pragya/Documents/Projects/ethdenver2025/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+      "lastModificationDate": 1740819468789,
       "contentHash": "794db3115001aa372c79326fcfd44b1f",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -838,18 +915,18 @@
         "IERC20Metadata"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/contracts/Benchmark.sol": {
-      "lastModificationDate": 1740785371689,
-      "contentHash": "0b60e4c9430173a28af3968ae2a486aa",
-      "sourceName": "contracts/Benchmark.sol",
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/StoryIntegration.sol": {
+      "lastModificationDate": 1740826897755,
+      "contentHash": "65d2793f1dd04f616c370f8b4ee5d6c2",
+      "sourceName": "contracts/StoryIntegration.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -866,28 +943,29 @@
           }
         }
       },
-      "imports": [],
+      "imports": [
+        "@openzeppelin/contracts/token/ERC721/IERC721.sol",
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
       "versionPragmas": [
-        "^0.8.19"
+        "^0.8.20"
       ],
       "artifacts": [
-        "Benchmark",
-        "IRewards",
-        "IZKVerifier"
+        "StoryIntegration"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/contracts/CredentialIssuer.sol": {
-      "lastModificationDate": 1740785371690,
-      "contentHash": "1887402d76f3a9b1f5f1893b4f6095cb",
-      "sourceName": "contracts/CredentialIssuer.sol",
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/DataMarket.sol": {
+      "lastModificationDate": 1740826942257,
+      "contentHash": "f39933ff44c5856060547063c7e9951e",
+      "sourceName": "contracts/DataMarket.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -906,27 +984,29 @@
       },
       "imports": [
         "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        "@openzeppelin/contracts/access/Ownable.sol"
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "./StoryIntegration.sol",
+        "@openzeppelin/contracts/utils/Strings.sol"
       ],
       "versionPragmas": [
-        "^0.8.19"
+        "^0.8.20"
       ],
       "artifacts": [
-        "CredentialIssuer"
+        "DataMarket"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/contracts/Rewards.sol": {
-      "lastModificationDate": 1740785371691,
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/Rewards.sol": {
+      "lastModificationDate": 1740814391152,
       "contentHash": "d0dda383927585ed4234c54e34c09240",
       "sourceName": "contracts/Rewards.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -955,18 +1035,18 @@
         "Rewards"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/contracts/DataMarket.sol": {
-      "lastModificationDate": 1740785371690,
-      "contentHash": "b0193a03ee491d1f7e6ac443de346a0b",
-      "sourceName": "contracts/DataMarket.sol",
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/DatasetNftHook.sol": {
+      "lastModificationDate": 1740826579669,
+      "contentHash": "f3f4d516df0d71bc71704cf317884735",
+      "sourceName": "contracts/DatasetNftHook.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -984,29 +1064,145 @@
         }
       },
       "imports": [
-        "@openzeppelin/contracts/access/Ownable.sol"
+        "./mocks/MockHookReceiver.sol",
+        "./mocks/MockSiloConfig.sol",
+        "./interfaces/IRoiProof.sol",
+        "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "@openzeppelin/contracts/token/ERC721/ERC721.sol"
       ],
       "versionPragmas": [
-        "^0.8.19"
+        "^0.8.20"
       ],
       "artifacts": [
-        "Counters",
-        "DataMarket",
-        "IEthStorage"
+        "DatasetNFT",
+        "DatasetSiloHook"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/contracts/CrossChainData.sol": {
-      "lastModificationDate": 1740785371690,
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/mocks/MockHookReceiver.sol": {
+      "lastModificationDate": 1740826751653,
+      "contentHash": "207c372ca17a9dea8039beea9abbc8c0",
+      "sourceName": "contracts/mocks/MockHookReceiver.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "BaseHookReceiver",
+        "GaugeHookReceiver",
+        "IHookReceiver",
+        "PartialLiquidation"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/mocks/MockSiloConfig.sol": {
+      "lastModificationDate": 1740826751527,
+      "contentHash": "f70305ac73acf6478b164029b3fedb79",
+      "sourceName": "contracts/mocks/MockSiloConfig.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "ISiloConfig",
+        "MockSiloConfig"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/interfaces/IRoiProof.sol": {
+      "lastModificationDate": 1740826752843,
+      "contentHash": "3a910c845c75d4f28f3ab8825c3de018",
+      "sourceName": "contracts/interfaces/IRoiProof.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IRoiProof"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/CrossChainData.sol": {
+      "lastModificationDate": 1740814391135,
       "contentHash": "63f3172f9ac6ed19911c53327b5ccf8f",
       "sourceName": "contracts/CrossChainData.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -1032,18 +1228,18 @@
         "IChainlinkCCIP"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/contracts/Governance.sol": {
-      "lastModificationDate": 1740785371690,
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/Governance.sol": {
+      "lastModificationDate": 1740814391203,
       "contentHash": "5e482f7758a61aaa3dfff47cb6f01843",
       "sourceName": "contracts/Governance.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -1068,18 +1264,54 @@
         "Governance"
       ]
     },
-    "/Users/kimberly/FDAO-ETHDenver25/contracts/MockSilo.sol": {
-      "lastModificationDate": 1740803478993,
-      "contentHash": "22ed93680d1f0b06abdeb7104e84e911",
-      "sourceName": "contracts/MockSilo.sol",
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/ISilo.sol": {
+      "lastModificationDate": 1740814391133,
+      "contentHash": "4930d5bfc781df65d87c01f39d27bda5",
+      "sourceName": "contracts/ISilo.sol",
       "solcConfig": {
-        "version": "0.8.28",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "ISilo"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/Silo.sol": {
+      "lastModificationDate": 1740814391146,
+      "contentHash": "c8d01ae6731d9f036256c424120a130d",
+      "sourceName": "contracts/Silo.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -1097,10 +1329,233 @@
         }
       },
       "imports": [
-        "./Rewards.sol"
+        "./ISilo.sol"
       ],
       "versionPragmas": [
         "^0.8.19"
+      ],
+      "artifacts": [
+        "Silo"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/mocks/MockRewards.sol": {
+      "lastModificationDate": 1740831790962,
+      "contentHash": "684c4ce92ea3959008ffa822bdb3a13f",
+      "sourceName": "contracts/mocks/MockRewards.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "MockRewards"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/mocks/MockRoiProof.sol": {
+      "lastModificationDate": 1740826751280,
+      "contentHash": "28459128cd425b1cba18cf10989bfd73",
+      "sourceName": "contracts/mocks/MockRoiProof.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./MockSiloInterfaces.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "MockRoiProof"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/mocks/MockSiloInterfaces.sol": {
+      "lastModificationDate": 1740826751634,
+      "contentHash": "d239ac08c1d204044a79dbc46d559b2b",
+      "sourceName": "contracts/mocks/MockSiloInterfaces.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "BaseHookReceiver",
+        "GaugeHookReceiver",
+        "IHookReceiver",
+        "IRoiProof",
+        "ISiloConfig",
+        "PartialLiquidation"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/mocks/MockStoryIntegration.sol": {
+      "lastModificationDate": 1740831678479,
+      "contentHash": "681b7899eb0e26eac62c736f6d7fc13e",
+      "sourceName": "contracts/mocks/MockStoryIntegration.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "MockSilo"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/mocks/MockZKVerifier.sol": {
+      "lastModificationDate": 1740831781854,
+      "contentHash": "682db28e4fca68c1b0e1c1f7202de41e",
+      "sourceName": "contracts/mocks/MockZKVerifier.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "MockZKVerifier"
+      ]
+    },
+    "/Users/pragya/Documents/Projects/ethdenver2025/contracts/mocks/MockSilo.sol": {
+      "lastModificationDate": 1740831768164,
+      "contentHash": "681b7899eb0e26eac62c736f6d7fc13e",
+      "sourceName": "contracts/mocks/MockSilo.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
       ],
       "artifacts": [
         "MockSilo"

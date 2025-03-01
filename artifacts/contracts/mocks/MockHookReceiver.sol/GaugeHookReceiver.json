@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "GaugeHookReceiver",
+  "sourceName": "contracts/mocks/MockHookReceiver.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220bfd7260d84b77c1efba0821605ce213910480b7856d9182bc6942e3c8129367664736f6c63430008140033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220bfd7260d84b77c1efba0821605ce213910480b7856d9182bc6942e3c8129367664736f6c63430008140033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

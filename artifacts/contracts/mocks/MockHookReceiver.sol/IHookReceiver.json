@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "IEthStorage",
-  "sourceName": "contracts/DataMarket.sol",
+  "contractName": "IHookReceiver",
+  "sourceName": "contracts/mocks/MockHookReceiver.sol",
   "abi": [
     {
       "inputs": [
@@ -11,14 +11,21 @@
           "type": "bytes"
         }
       ],
-      "name": "storeData",
-      "outputs": [
+      "name": "afterAction",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
         {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
         }
       ],
+      "name": "beforeDeposit",
+      "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     }

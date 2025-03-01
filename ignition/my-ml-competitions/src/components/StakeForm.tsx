@@ -5,10 +5,12 @@ import credentialIssuerJson from "../artifacts/contracts/CredentialIssuer.sol/Cr
 const CREDENTIAL_ISSUER_ADDRESS = "0x1E3D38b55B1110077ff66c6A4e6074B32Db34b3A";
 const CREDENTIAL_ISSUER_ABI = credentialIssuerJson.abi;
 
+type EthereumAddress = `0x${string}`;
+
 interface StakeFormProps {
   stakeAmount: number;
-  account: string; // We'll no longer rely solely on this value.
-  contestOwner: string;
+  account: EthereumAddress | "";  // Updated to match the type from parent components
+  contestOwner: EthereumAddress;
 }
 
 const StakeForm: React.FC<StakeFormProps> = ({ stakeAmount, account, contestOwner }) => {
@@ -46,7 +48,11 @@ const StakeForm: React.FC<StakeFormProps> = ({ stakeAmount, account, contestOwne
       const staker = await signer.getAddress();
 
       // 3. Issue NFT credential to the staker via CredentialIssuer contract
-      const nftContract = new ethers.Contract(CREDENTIAL_ISSUER_ADDRESS, CREDENTIAL_ISSUER_ABI, signer);
+      const nftContract = new ethers.Contract(
+        CREDENTIAL_ISSUER_ADDRESS as EthereumAddress,  // Type assertion for constant address
+        CREDENTIAL_ISSUER_ABI,
+        signer
+      );
       // For the dataHash, we use a dummy hash here; in a real scenario you might hash file contents or other data.
       const dataHash = ethers.keccak256(ethers.toUtf8Bytes("Stake NFT Credential"));
       const nftTx = await nftContract.issueCredential(staker, dataHash);
