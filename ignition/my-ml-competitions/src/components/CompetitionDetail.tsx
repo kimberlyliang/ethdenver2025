@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-// import { ethers } from "ethers";
-// import contestJson from "../artifacts/contracts/contest.sol/Contest.json";
+
 
 import { FileUpload } from "./FileUpload";
 import StakeForm from "./StakeForm";
