@@ -1,17 +1,39 @@
 {
   "dependencies": {
+    "@dynamic-labs/ethereum": "^4.8.2",
+    "@dynamic-labs/sdk-react-core": "^4.8.2",
+    "@dynamic-labs/wagmi-connector": "^4.8.2",
     "@openzeppelin/contracts-upgradeable": "^5.2.0",
+    "@story-protocol/core-sdk": "^1.3.0-beta.3",
+    "@story-protocol/protocol-core": "https://github.com/storyprotocol/protocol-core-v1",
     "@story-protocol/protocol-periphery": "https://github.com/storyprotocol/protocol-periphery-v1",
+    "@tanstack/react-query": "^5.66.11",
     "erc6551": "^0.3.1",
     "ethstorage-sdk": "^3.0.1",
     "react-toastify": "^11.0.5",
-    "solady": "^0.1.10"
+    "solady": "^0.1.10",
+    "viem": "^2.23.5",
+    "wagmi": "^2.14.12"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@openzeppelin/contracts": "^5.2.0",
     "dotenv": "^16.4.7",
-    "ds-test": "https://github.com/dapphub/ds-test",
+    "ds-test": "git+https://github.com/dapphub/ds-test.git",
     "hardhat": "^2.22.19"
-  }
+  },
+  "name": "ethdenver2025",
+  "version": "1.0.0",
+  "main": "hardhat.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "pragya-s7 <pragya7@wharton.upenn.edu>",
+  "license": "ISC",
+  "description": "",
+  "repository": "https://github.com/kimberlyliang/ethdenver2025.git"
 }
