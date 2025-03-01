@@ -1,9 +1,9 @@
 import { EthStorage } from "ethstorage-sdk";
 import { ethers } from "ethers";
-import DataMarketABI from "../contracts/abis/DataMarket.json";
+import { DataMarketAbi } from "../contracts";
 
-const DATA_MARKET_ADDRESS = process.env.REACT_APP_DATA_MARKET_ADDRESS;
-const ETHSTORAGE_RPC = process.env.REACT_APP_ETHSTORAGE_RPC;
+const DATA_MARKET_ADDRESS = import.meta.env.VITE_DATA_MARKET_ADDRESS;
+const ETHSTORAGE_RPC = import.meta.env.VITE_ETHSTORAGE_RPC;
 
 export class StorageService {
   private ethStorage: any;
@@ -19,14 +19,14 @@ export class StorageService {
       const signer = await provider.getSigner();
       
       this.ethStorage = await EthStorage.create({
-        rpc: window.ethereum.provider,
+        rpc: provider,
         ethStorageRpc: ETHSTORAGE_RPC,
         signer: signer
       });
 
       this.dataMarketContract = new ethers.Contract(
         DATA_MARKET_ADDRESS!,
-        DataMarketABI,
+        DataMarketAbi,
         signer
       );
     }

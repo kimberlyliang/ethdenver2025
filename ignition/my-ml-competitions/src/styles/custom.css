@@ -1,0 +1,11 @@
+.material-tailwind-tab[data-active=true] {
+  @apply bg-gradient-to-r from-[#56bab4] to-[#70aade] text-white shadow-md;
+}
+
+.material-tailwind-tab:hover {
+  @apply bg-gray-200 transition-colors;
+}
+
+.material-tailwind-tab[data-active=true]:hover {
+  @apply bg-gradient-to-r from-[#56bab4] to-[#70aade];
+}

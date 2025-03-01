@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
+import './styles/custom.css'; // Import the custom styles
 
 // Import OnchainKitProvider and a chain (here using Base via wagmi)
 import { OnchainKitProvider } from '@coinbase/onchainkit';
