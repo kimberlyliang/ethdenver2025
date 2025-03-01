@@ -76,7 +76,7 @@ function App() {
       {!walletConnected ? (
         <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-[#41b8d5] via-[#56bab4] to-[#70aade] p-8">
           <div className="bg-white/90 backdrop-blur-md rounded-xl shadow-2xl p-10 max-w-md w-full text-center">
-            <h1 className="text-4xl font-bold mb-3 text-[#41b8d5]">ML Competitions</h1>
+            <h1 className="text-4xl font-bold mb-3 text-[#41b8d5]">Validata</h1>
             <p className="text-gray-600 mb-8">Connect your wallet to enter the platform</p>
             <Wallet>
               <ConnectWallet>
@@ -98,7 +98,7 @@ function App() {
                 <div className="h-10 w-10 rounded-full bg-gradient-to-r from-[#56bab4] to-[#70aade] flex items-center justify-center text-white font-bold text-xl">
                   ML
                 </div>
-                <span className="text-xl font-semibold text-[#41b8d5]">ML Competitions</span>
+                <span className="text-xl font-semibold text-[#41b8d5]">Validata</span>
               </div>
               
               <div className="mb-4 md:mb-0 relative">
