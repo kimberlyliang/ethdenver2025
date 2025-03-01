@@ -1,48 +1,49 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.26;
 
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "./StoryIntegration.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 
-interface IEthStorage {
-    function putBlob(bytes32 key, uint256 blobIdx, uint256 length) external;
-}
+contract DataMarket is ERC721URIStorage, Ownable {
+    using Counters for Counters.Counter;
+    Counters.Counter private _tokenIdCounter;
+    
+    StoryIntegration public storyIntegration;
 
-contract DataMarket is Ownable {
-    struct DataEntry {
+    struct Dataset {
         string metadata;
-        bytes32 ethStorageKey; // Key used to retrieve from EthStorage
-        uint256 blobIndex; // Index of the blob within EthStorage
-        uint256 dataLength; // Length of the stored data
+        uint256 tokenId;
         address uploader;
+        address ipId;  // Story Protocol IP Asset ID
+        uint256 licenseTermsId; // Licensing terms for dataset usage
     }
 
-    mapping(uint256 => DataEntry) public dataEntries;
-    IEthStorage public ethStorage;
-    uint256 public dataCounter;
+    mapping(uint256 => Dataset) public datasets;
 
-    event DataUploaded(uint256 indexed dataId, bytes32 ethStorageKey, uint256 blobIndex, uint256 dataLength, address indexed uploader);
+    event DatasetUploaded(uint256 indexed tokenId, address indexed uploader, string metadata, address ipId);
 
-    constructor(address _ethStorage) Ownable(msg.sender) {
-        require(_ethStorage != address(0), "Invalid EthStorage address");
-        ethStorage = IEthStorage(_ethStorage);
+    constructor(address _storyIntegration) ERC721("DataSwarm Dataset", "DSDATA") {
+        storyIntegration = StoryIntegration(_storyIntegration);
     }
 
-    function uploadData(bytes32 key, uint256 blobIdx, uint256 length, string memory metadata) external {
-        require(bytes(metadata).length > 0, "Metadata cannot be empty");
-        require(length <= 131072, "Exceeds max blob size");
+    /// @notice Uploads dataset, mints NFT, registers it as IP Asset
+    function uploadDataset(string memory metadata) external returns (uint256, address, uint256) {
+        uint256 tokenId = _tokenIdCounter.current();
+        _tokenIdCounter.increment();
 
-        // Call EthStorage to store data
-        ethStorage.putBlob(key, blobIdx, length);
+        // Mint dataset NFT
+        _mint(msg.sender, tokenId);
+        _setTokenURI(tokenId, metadata);
 
-        // Store metadata
-        uint256 dataId = dataCounter++;
-        dataEntries[dataId] = DataEntry(metadata, key, blobIdx, length, msg.sender);
+        // Register dataset on Story Protocol
+        (address ipId, uint256 licenseTermsId) = storyIntegration.registerDataset(address(this), tokenId);
 
-        emit DataUploaded(dataId, key, blobIdx, length, msg.sender);
-    }
+        // Store dataset details
+        datasets[tokenId] = Dataset(metadata, tokenId, msg.sender, ipId, licenseTermsId);
 
-    function getData(uint256 dataId) external view returns (string memory metadata, bytes32 key, uint256 blobIndex, uint256 dataLength) {
-        DataEntry memory entry = dataEntries[dataId];
-        return (entry.metadata, entry.ethStorageKey, entry.blobIndex, entry.dataLength);
+        emit DatasetUploaded(tokenId, msg.sender, metadata, ipId);
+        return (tokenId, ipId, licenseTermsId);
     }
 }
