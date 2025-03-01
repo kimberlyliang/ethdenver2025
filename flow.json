@@ -1,0 +1,22 @@
+{
+    "contracts": {
+      "Benchmark": "./cadence/contracts/Benchmark.cdc",
+      "CredentialIssuer": "./cadence/contracts/CredentialIssuer.cdc",
+      "CrossChainData": "./cadence/contracts/CrossChainData.cdc",
+      "DataMarket": "./cadence/contracts/DataMarket.cdc",
+      "Governance": "./cadence/contracts/Governance.cdc",
+      "Rewards": "./cadence/contracts/Rewards.cdc"
+    },
+    "deployments": {
+      "testnet": {
+        "my-testnet-account": [
+          "Benchmark",
+          "CredentialIssuer",
+          "CrossChainData",
+          "DataMarket",
+          "Governance",
+          "Rewards"
+        ]
+      }
+    }
+  }

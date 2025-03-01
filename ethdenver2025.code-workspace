@@ -1,0 +1,45 @@
+{
+	"folders": [
+		{
+			"name": "ethdenver2025",
+			"path": "."
+		},
+		{
+			"name": "Frontend",
+			"path": "../Frontend"
+		},
+		{
+			"name": "node_modules",
+			"path": "../node_modules"
+		},
+		{
+			"name": "scripts",
+			"path": "../scripts"
+		},
+		{
+			"name": "ignition",
+			"path": "../ignition"
+		},
+		{
+			"name": "contracts",
+			"path": "../contracts"
+		},
+		{
+			"name": "cache",
+			"path": "../cache"
+		},
+		{
+			"name": "Backend",
+			"path": "../Backend"
+		},
+		{
+			"name": "artifacts",
+			"path": "../artifacts"
+		},
+		{
+			"name": "test",
+			"path": "../test"
+		}
+	],
+	"settings": {}
+}
