@@ -32,8 +32,25 @@ const CompetitionDetail: React.FC<CompetitionDetailProps> = ({ walletAddress }) 
   const [loading, setLoading] = useState(true);
 
   // File upload states (adjust as needed)
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-  const [trainingFile, setTrainingFile] = useState<File | null>(null);
+  const [uploadedFile, setUploadedFile] = useState<{
+    file: File | null;
+    metadata?: {
+      tokenId: string;
+      ipId: string;
+      licenseTermsId: string;
+      ethStorageKey: string;
+    };
+  }>({ file: null });
+  const [trainingFile, setTrainingFile] = useState<{
+    file: File | null;
+    metadata?: {
+      tokenId: string;
+      ipId: string;
+      licenseTermsId: string;
+      ethStorageKey: string;
+    };
+  }>({ file: null });
+  const [uploadError, setUploadError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchContestDetails = async () => {
@@ -123,11 +140,19 @@ const CompetitionDetail: React.FC<CompetitionDetailProps> = ({ walletAddress }) 
           <label className="block font-semibold mb-1">Upload File (ipynb)</label>
           <FileUpload
             text="Upload ipynb File"
-            onFileSelect={(files) => {
-              console.log("Uploaded ipynb:", files);
-              setUploadedFile(files[0]);
+            accept=".ipynb"
+            onFileSelect={(files, metadata) => {
+              setUploadedFile({
+                file: files[0],
+                metadata
+              });
+              setUploadError(null);
             }}
+            description="Model implementation notebook"
           />
+          {uploadError && (
+            <div className="text-red-500 text-sm mt-2">{uploadError}</div>
+          )}
         </div>
 
         {/* Upload Training Data (CSV) */}
@@ -135,10 +160,15 @@ const CompetitionDetail: React.FC<CompetitionDetailProps> = ({ walletAddress }) 
           <label className="block font-semibold mb-1">Upload Training Data</label>
           <FileUpload
             text="Upload csv File"
-            onFileSelect={(files) => {
-              console.log("Training data file:", files);
-              setTrainingFile(files[0]);
+            accept=".csv"
+            onFileSelect={(files, metadata) => {
+              setTrainingFile({
+                file: files[0],
+                metadata
+              });
+              setUploadError(null);
             }}
+            description="Training dataset"
           />
         </div>
 
