@@ -1,86 +1,88 @@
-import React, { ChangeEvent, useState } from "react";
-import { storageService } from "../services/StorageService";
+import React, { useEffect, useState } from 'react';
+import { storageService } from '../services/StorageService';
 
-interface FileUploadProps {
-  text?: string;
-  onFileSelect: (files: File[], metadata?: { 
-    tokenId: string;
-    ipId: string;
-    licenseTermsId: string;
-    ethStorageKey: string;
-  }) => void;
-  accept?: string;
-  multiple?: boolean;
-  description?: string;
-}
-
-const FileUpload: React.FC<FileUploadProps> = ({
-  text = "Upload File",
-  onFileSelect,
-  accept,
-  multiple = false,
-  description = "",
-}) => {
-  const [uploading, setUploading] = useState(false);
+export const FileUpload: React.FC = () => {
+  const [isInitialized, setIsInitialized] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isMock, setIsMock] = useState(false);
+  const [uploadedKey, setUploadedKey] = useState<string | null>(null);
 
-  const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const filesArray = Array.from(e.target.files);
-      setUploading(true);
-      setError(null);
-
+  // Initialize on component mount
+  useEffect(() => {
+    const init = async () => {
       try {
-        // Upload file to ETHStorage
-        const ethStorageKey = await storageService.uploadToEthStorage(filesArray[0]);
-
-        // Register dataset and mint NFT
-        const metadata = await storageService.registerDataset({
-          name: filesArray[0].name,
-          description: description || `Dataset uploaded at ${new Date().toISOString()}`,
-          ethStorageKey
-        });
-
-        onFileSelect(filesArray, {
-          ...metadata,
-          ethStorageKey
-        });
-
+        const success = await storageService.initialize();
+        setIsInitialized(success);
+        setIsMock(storageService.isUsingMock());
+        
+        if (!success) {
+          setError("Failed to initialize storage service. Please check your wallet connection.");
+        }
       } catch (err) {
-        console.error("Upload error:", err);
-        setError(err instanceof Error ? err.message : "Failed to upload file");
-      } finally {
-        setUploading(false);
+        console.error("Initialization error:", err);
+        setError(`Initialization error: ${err instanceof Error ? err.message : String(err)}`);
       }
+    };
+    
+    init();
+  }, []);
+
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    
+    setIsUploading(true);
+    setError(null);
+    setUploadedKey(null);
+    
+    try {
+      // Service will auto-initialize if needed
+      const key = await storageService.uploadToEthStorage(file);
+      console.log("Uploaded file with key:", key);
+      setUploadedKey(key);
+    } catch (err) {
+      console.error("Upload error:", err);
+      setError(`Upload error: ${err instanceof Error ? err.message : String(err)}`);
+    } finally {
+      setIsUploading(false);
     }
   };
 
   return (
-    <div className="space-y-2">
-      <div className="relative">
-        <input
-          type="file"
-          accept={accept}
-          multiple={multiple}
-          onChange={handleChange}
-          disabled={uploading}
-          className={`relative z-10 opacity-0 cursor-pointer h-full w-full`}
-        />
-        <div className="absolute top-0 left-0 h-full w-full flex items-center justify-center bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg">
-          <div className="text-center">
-            {uploading ? (
-              <div className="animate-pulse">Uploading...</div>
-            ) : (
-              <div>{text}</div>
-            )}
-          </div>
+    <div>
+      <h2>Upload Dataset</h2>
+      {isMock && (
+        <div className="mock-warning">
+          <p><strong>Note:</strong> Using mock storage implementation for development.</p>
+          <p>Files will be stored in memory and not on EthStorage.</p>
         </div>
-      </div>
-      {error && (
-        <div className="text-red-500 text-sm">{error}</div>
+      )}
+      
+      {error && <p className="error">{error}</p>}
+      
+      <input 
+        type="file" 
+        onChange={handleChange} 
+        disabled={isUploading} 
+      />
+      
+      {isUploading && <p>Uploading...</p>}
+      
+      {!isInitialized && !error && <p>Initializing storage service...</p>}
+      
+      {!isInitialized && (
+        <button onClick={() => storageService.reinitialize()}>
+          Reconnect Wallet
+        </button>
+      )}
+      
+      {uploadedKey && (
+        <div className="upload-success">
+          <p>Upload successful!</p>
+          <p>Storage Key: {uploadedKey}</p>
+        </div>
       )}
     </div>
   );
 };
-
-export default FileUpload;
