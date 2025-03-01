@@ -6,9 +6,9 @@ import {ISiloConfig} from "silo-contracts-v2/silo-core/contracts/interfaces/ISil
 import {BaseHookReceiver} from "silo-contracts-v2/silo-core/contracts/utils/hook-receivers/_common/BaseHookReceiver.sol";
 import {GaugeHookReceiver} from "silo-contracts-v2/silo-core/contracts/utils/hook-receivers/gauge/GaugeHookReceiver.sol";
 import {PartialLiquidation} from "silo-contracts-v2/silo-core/contracts/utils/hook-receivers/liquidation/PartialLiquidation.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "./RoiProof.sol";
+import {ERC721URIStorage} from "@openzeppelin/token/ERC721/extensions/ERC721URIStorage.sol";
+import {Ownable} from "@openzeppelin/access/Ownable.sol";
+import "./RoiProof.circom";
 
 contract DatasetNFT is ERC721URIStorage, Ownable {
     uint256 private _tokenIdCounter;
